@@ -1,0 +1,75 @@
+{
+    "$schema": "http://schema.management.azure.com/schemas/2014-04-01-preview/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "authoringName": {
+            "type": "String",
+            "defaultValue": "[concat('luisauthoring-', uniqueString(resourceGroup().id))]"
+        },
+        "runtimeName": {
+            "type": "String",
+            "defaultValue": "[concat('luisprediction-', uniqueString(resourceGroup().id))]"
+        },
+        "authoringLocation": {
+            "type": "String",
+            "defaultValue": "west us"
+        },
+        "runtimeLocation": {
+            "type": "String",
+            "defaultValue": "west us"
+        },
+        "authoringSku": {
+            "type": "String",
+            "defaultValue": "F0",
+            "allowedValues": [
+                "F0",
+                "S0"
+            ]
+        },
+        "runtimeSku": {
+            "type": "String",
+            "defaultValue": "F0",
+            "allowedValues": [
+                "F0",
+                "S0"
+            ]
+        },
+        "tagValues": {
+            "type": "Object",
+            "defaultValue": {
+                "labs": "AI-900"
+            }
+        }
+    },
+    "resources": [
+        {
+            "type": "Microsoft.CognitiveServices/accounts",
+            "apiVersion": "2016-02-01-preview",
+            "name": "[parameters('runtimeName')]",
+            "location": "[parameters('runtimeLocation')]",
+            "sku": {
+                "name": "[parameters('runtimeSku')]"
+            },
+            "kind": "LUIS",
+            "properties": {
+                "customSubDomainName": "[parameters('runtimeName')]"
+            }
+        },
+        {
+            "type": "Microsoft.CognitiveServices/accounts",
+            "apiVersion": "2016-02-01-preview",
+            "name": "[parameters('authoringName')]",
+            "location": "[parameters('authoringLocation')]",
+            "dependsOn": [
+                "[resourceId('Microsoft.CognitiveServices/accounts', parameters('runtimeName'))]"
+            ],
+            "sku": {
+                "name": "[parameters('authoringSku')]"
+            },
+            "kind": "LUIS.Authoring",
+            "properties": {
+                "customSubDomainName": "[parameters('authoringName')]"
+            }
+        }
+    ]
+}
