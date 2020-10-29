@@ -31,6 +31,11 @@ Back in your Azure cloud shell, go ahead and upload the ml-template.json file to
 
 ![Upload ml-template json file to Azure cloud shell](images/upload-aml-file-to-cloud-shell.png)
 
+
+<i> Note: If you have multiple Azure subscriptions tied to your Azure account, remember to set it the right subscription first by executing the following command in your Azure cloud shell: </i>
+![Set Azure susbcription for the deployment](images/set-subscription.png)
+
+
 Once the upload has completed (it should only take a second or two), execute the following commands in your Azure cloud shell: 
 
 ```azurecli
