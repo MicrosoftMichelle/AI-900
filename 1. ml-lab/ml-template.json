@@ -46,7 +46,7 @@
             }
         },
         "storageAccountName": {
-            "defaultValue": "[concat('storageaccount-', uniqueString(parameters('resourceGroupName'), parameters('workspaceName')))]",
+            "defaultValue": "[concat('sa', uniqueString(parameters('resourceGroupName'), parameters('workspaceName')))]",
             "type": "String",
             "metadata": {
                 "description": "Name of the storage account."
@@ -93,7 +93,7 @@
             }
         },
         "keyVaultName": {
-            "defaultValue": "[concat('keyvault-', uniqueString(parameters('resourceGroupName'), parameters('workspaceName')))]",
+            "defaultValue": "[concat('kv', uniqueString(parameters('resourceGroupName'), parameters('workspaceName')))]",
             "type": "String",
             "metadata": {
                 "description": "Name of the key vault."
@@ -126,7 +126,7 @@
             }
         },
         "applicationInsightsName": {
-            "defaultValue": "[concat('appinsight-', uniqueString(parameters('resourceGroupName'), parameters('workspaceName')))]",
+            "defaultValue": "[concat('ai', uniqueString(parameters('resourceGroupName'), parameters('workspaceName')))]",
             "type": "String",
             "metadata": {
                 "description": "Name of ApplicationInsights."
@@ -149,7 +149,7 @@
             }
         },
         "containerRegistryName": {
-            "defaultValue": "[concat('containerregistry-', uniqueString(parameters('resourceGroupName'), parameters('workspaceName')))]",
+            "defaultValue": "[concat('cr', uniqueString(parameters('resourceGroupName'), parameters('workspaceName')))]",
             "type": "String",
             "metadata": {
                 "description": "The container registry bind to the workspace."
@@ -192,7 +192,7 @@
             }
         },
         "vnetName": {
-            "defaultValue": "[concat('vnet-',uniqueString(parameters('resourceGroupName'), parameters('workspaceName')))]",
+            "defaultValue": "[concat('v',uniqueString(parameters('resourceGroupName'), parameters('workspaceName')))]",
             "type": "String",
             "metadata": {
                 "description": "Name of the VNet"
@@ -224,7 +224,7 @@
             }
         },
         "subnetName": {
-            "defaultValue": "[concat('subnet-',uniqueString(parameters('resourceGroupName'), parameters('workspaceName')))]",
+            "defaultValue": "[concat('s',uniqueString(parameters('resourceGroupName'), parameters('workspaceName')))]",
             "type": "String",
             "metadata": {
                 "description": "Name of the subnet"
@@ -238,7 +238,7 @@
             }
         },
         "adbWorkspace": {
-            "defaultValue": "azuredatabricks-",
+            "defaultValue": "",
             "type": "String",
             "metadata": {
                 "description": "Azure Databrick workspace to be linked to the workspace"
